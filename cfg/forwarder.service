@@ -1,0 +1,13 @@
+[Unit]
+Description=rustls TLS forwarding
+
+[Service]
+Type=simple
+ExecStart=/root/rustls/target/debug/examples/tlsserver --certs /etc/letsencrypt/live/rustls.jbp.io/fullchain.pem --key /etc/letsencrypt/live/rustls.jbp.io/privkey.rsa --tickets --resumption forward 1080
+Environment=RUST_BACKTRACE=1
+Restart=always
+StandardError=syslog
+StandardOutput=syslog
+
+[Install]
+WantedBy=default.target
