@@ -25,6 +25,8 @@ config.done: packages.done
 
 webroot.done:
 	cp -vr html /var/www
+	dd if=/dev/zero bs=1M count=10 of=/var/www/html/10mb.bin
+	dd if=/dev/zero bs=1M count=100 of=/var/www/html/100mb.bin
 	touch $@
 
 fetch-rustls.done:
